@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Identity.Validation.Interfaces
 {
@@ -19,5 +15,11 @@ namespace Identity.Validation.Interfaces
         bool IsValid { get; }
 
         int ControlDigit { get; }
+
+        /// <summary>
+        /// This Identifier isn't used in South Africa.
+        /// Just thought it would come in handy someday.
+        /// </summary>
+        Race Race { get; }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Identity.Validation.Interfaces;
 
 namespace Identity.Validation.Country
@@ -16,7 +13,7 @@ namespace Identity.Validation.Country
         public SouthAfricanID(string idNumber)
         {
             if (string.IsNullOrWhiteSpace(idNumber))
-                throw new ArgumentNullException("ID Number");
+                throw new ArgumentNullException(nameof(idNumber));
 
             if (idNumber.Length != 13)
                 throw new ArgumentException("ID Number is not 13 characters long.");
@@ -38,6 +35,7 @@ namespace Identity.Validation.Country
             {
                 DateOfBirth = GetDateOfBirth();
                 Gender = GetGender();
+                Race = GetRace();
             }
         }
 
@@ -49,6 +47,13 @@ namespace Identity.Validation.Country
             var rawDay = int.Parse(RawNumber.Substring(4, 2));
 
             return new DateTime(rawYear, rawMonth, rawDay);
+        }
+
+        private Race GetRace()
+        {
+            var racePart = splitNumbers[10];
+
+            return (Race)racePart;
         }
 
         private Gender GetGender()
@@ -120,5 +125,7 @@ namespace Identity.Validation.Country
         public string RawNumber { get; private set; }
 
         public int ControlDigit { get; private set; }
+
+        public Race Race { get; private set; }
     }
 }

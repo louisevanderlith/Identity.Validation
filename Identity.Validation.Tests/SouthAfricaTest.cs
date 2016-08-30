@@ -12,7 +12,7 @@ namespace Identity.Validation.Tests
 
         public SouthAfricaTest()
         {
-            var idNumber = "9102085125081";
+            var idNumber = "8801235111088";
             identification = new SouthAfricanID(idNumber);
         }
 
@@ -25,7 +25,7 @@ namespace Identity.Validation.Tests
         [TestMethod]
         public void BirthdayIsCorrect()
         {
-            var expected = new DateTime(1991, 02, 08);
+            var expected = new DateTime(1988, 01, 23);
             Assert.AreEqual(expected, identification.DateOfBirth);
         }
 
@@ -33,6 +33,12 @@ namespace Identity.Validation.Tests
         public void IdIsValid()
         {
             Assert.IsTrue(identification.IsValid);
+        }
+
+        [TestMethod]
+        public void IsRaceValid()
+        {
+            Assert.AreEqual(Race.White, identification.Race);
         }
     }
 }
