@@ -1,7 +1,7 @@
-﻿using System;
-using Identity.Validation.Country;
+﻿using Identity.Validation.Country;
 using Identity.Validation.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Identity.Validation.Tests
 {

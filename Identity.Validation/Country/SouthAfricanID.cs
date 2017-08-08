@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Identity.Validation.Interfaces;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Identity.Validation.Interfaces;
 
 namespace Identity.Validation.Country
 {
@@ -74,7 +74,7 @@ namespace Identity.Validation.Country
             {
                 subControl += oddValue % 10;
                 oddValue = oddValue / 10;
-            };
+            }
 
             subControl += GetEvenDigitSum();
             result = 10 - (subControl % 10);
@@ -103,7 +103,7 @@ namespace Identity.Validation.Country
 
             for (var i = 0; i < 6; i++)
             {
-                total = total * 10 + splitNumbers[2 * (i + 1)];
+                total = (total * 10) + splitNumbers[2 * (i + 1)];
             }
 
             return total *= 2;
